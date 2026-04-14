@@ -1,0 +1,12 @@
+body.light-theme {
+  background-color: $light-bg;
+  color: $text-dark;
+}
+
+body.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --text-rgb: 0, 0, 0;
+  --card-bg: #f8f9fa;
+  --primary-color: #c9a96e;
+}

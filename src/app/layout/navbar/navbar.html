@@ -1,0 +1,16 @@
+<nav class="custom-navbar" [class.scrolled]="scrolled">
+  <div class="container navbar-content">
+    <a class="navbar-brand" routerLink="/">LegalFirm</a>
+
+    <ul class="nav-links">
+      <li><a [routerLink]="['/']" fragment="home">Inicio</a></li>
+      <li><a [routerLink]="['/']" fragment="about">Sobre nosotros</a></li>
+      <li><a [routerLink]="['/']" fragment="services">Servicios</a></li>
+      <li><a [routerLink]="['/']" fragment="contact">Contacto</a></li>
+    </ul>
+
+    <button class="theme-toggle" (click)="toggleTheme()">
+      {{ isDark ? '☀️' : '🌙' }}
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,26 @@
+.custom-card {
+  border: none;
+  border-radius: 15px;
+  transition: 0.3s;
+
+  background-color: var(--card-bg);
+  color: var(--text-color);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(var(--text-rgb), 0.2);
+  }
+}
+
+.card-bg {
+  border: none;
+  border-radius: 15px;
+  transition: 0.3s;
+
+  background-color: var(--card-bg);
+  color: var(--text-color);
+
+  /* opcional para que se vea más premium */
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}

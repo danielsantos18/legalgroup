@@ -1,0 +1,64 @@
+.hero {
+  min-height: 100vh;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding-top: 500px;
+
+  /* 🔥 overlay elegante */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top,
+      rgba(201, 169, 110, 0.1),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+
+    background: rgba(201, 169, 110, 0.15);
+    color: var(--primary-color);
+
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+
+    span {
+      color: var(--primary-color);
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 500px;
+  }
+
+  .hero-actions {
+    .btn {
+      padding: 10px 22px;
+      font-weight: 500;
+    }
+  }
+
+  .hero-image {
+    img {
+      max-width: 100%;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+  }
+}

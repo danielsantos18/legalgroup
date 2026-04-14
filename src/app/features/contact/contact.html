@@ -1,0 +1,156 @@
+<section id="contact" class="contact-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Contáctanos</h2>
+      <p class="section-subtitle">Visítanos o escríbenos, estamos para ayudarte</p>
+    </div>
+
+    <div class="row">
+      <!-- 📌 INFO IZQUIERDA -->
+      <div class="col-lg-4 mb-4">
+        <div class="contact-card">
+          <h5>Información de contacto</h5>
+
+          <div class="contact-item">
+            <span>📍</span>
+            <div>
+              <strong>Oficinas Principales</strong>
+              <p>Centro Comercial Plaza de las Américas<br />Bogotá, Colombia</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span>📞</span>
+            <div>
+              <strong>Teléfonos</strong>
+              <p>+57 300 000 0000<br />+57 300 000 0000</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span>✉️</span>
+            <div>
+              <strong>Correo</strong>
+              <p>contacto@legalfirm.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span>🕒</span>
+            <div>
+              <strong>Horario</strong>
+              <p>Lunes a Viernes: 9:00 - 18:00</p>
+            </div>
+          </div>
+
+          <hr />
+
+          <h6 class="mt-3">Síguenos</h6>
+
+          <div class="social-container">
+            <!-- Facebook
+              <a href="#" class="social-card" style="--color: #3b5998">
+                <i class="bi bi-facebook social-icon"></i>
+                <span class="social-tooltip">Facebook</span>
+              </a>
+              -->
+
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/yumile-florian-paez-037763303?trk=contact-info"
+              class="social-card"
+              style="--color: #0077b5"
+            >
+              <i class="bi bi-linkedin social-icon"></i>
+              <span class="social-tooltip">LinkedIn</span>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              href="https://www.instagram.com/dra.yumileflorian/"
+              target="_blank"
+              class="social-card"
+              style="--color: #e1306c"
+            >
+              <i class="bi bi-instagram social-icon"></i>
+              <span class="social-tooltip">Instagram</span>
+            </a>
+
+            <!-- YouTube
+              <a href="#" class="social-card" style="--color: #ff0000">
+                <i class="bi bi-youtube social-icon"></i>
+                <span class="social-tooltip">YouTube</span>
+              </a>
+              -->
+
+            <!-- WhatsApp -->
+            <a
+              href="https://wa.me/573227179819"
+              target="_blank"
+              class="social-card"
+              style="--color: #25d366"
+            >
+              <i class="bi bi-whatsapp social-icon"></i>
+              <span class="social-tooltip">WhatsApp</span>
+            </a>
+
+            <!-- Twitter / X
+              <a href="#" class="social-card" style="--color: #000000">
+                <i class="bi bi-twitter social-icon"></i>
+                <span class="social-tooltip">Twitter</span>
+              </a>
+              -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 📌 DERECHA -->
+      <div class="col-lg-8">
+        <!-- 🗺 MAPA -->
+        <div class="map-card mb-4">
+          <iframe
+            src="https://maps.google.com/maps?q=plaza%20de%20las%20americas%20bogota&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            frameborder="0"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+
+        <!-- 📝 FORMULARIO -->
+        <div class="form-card">
+          <h5>Escríbenos un mensaje</h5>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <input type="text" placeholder="Nombre completo*" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="email" placeholder="Correo electrónico*" />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="custom-select" (click)="toggleDropdown()">
+              <div class="select-btn">
+                <span>{{ selected || 'Selecciona un asunto' }}</span>
+                <i class="bi bi-chevron-down" [class.rotate]="isOpen"></i>
+              </div>
+
+              <ul class="options" [class.active]="isOpen">
+                <li (click)="selectOption('Consulta legal')">Consulta legal</li>
+                <li (click)="selectOption('Asesoría')">Asesoría</li>
+                <li (click)="selectOption('Defensa jurídica')">Defensa jurídica</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <textarea rows="4" placeholder="Mensaje*"></textarea>
+          </div>
+
+          <button class="btn btn-primary-custom">Enviar mensaje</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+/* 📦 Imports */
+@import 'styles/abstracts/variables';
+@import 'styles/base/reset';
+
+@import 'styles/themes/light';
+@import 'styles/themes/dark';
+
+@import 'styles/layout/navbar';
+@import 'styles/layout/footer';
+
+@import 'styles/components/buttons';
+@import 'styles/components/cards';
+
+
+:root {
+  --navbar-height: 120px;
+}
+
+/* 🌍 Global styles */
+body {
+  padding-top: var(--navbar-height);
+  background: var(--bg-gradient);
+  color: var(--text-color);
+
+  /* 🔥 transición suave entre temas */
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* ✨ Transiciones globales */
+* {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* 🧩 Secciones */
+section {
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🔤 Tipografía */
+h2 {
+  font-weight: 700;
+}

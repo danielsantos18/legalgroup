@@ -1,0 +1,417 @@
+// ── Tokens ────────────────────────────────────────────
+$navy: #1a3a5c;
+$teal: #2a7f7f;
+$gold: #c8a951;
+$light: #f4f7fb;
+$white: #ffffff;
+$text: #1c2b3a;
+
+// ── Hero ──────────────────────────────────────────────
+.detail-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--hero-color, #{$navy}) 0%, #0a2030 100%);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -5%;
+    top: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+  }
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+}
+
+.min-vh-hero {
+  min-height: 300px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $gold;
+  }
+}
+
+.hero-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 1.8rem;
+    color: $white;
+  }
+}
+
+.detail-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: $white;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.detail-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+// ── Section header ────────────────────────────────────
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.section-heading {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 0.5rem;
+}
+
+.heading-line {
+  height: 3px;
+  width: 56px;
+  border-radius: 2px;
+}
+
+// ── Items grid ────────────────────────────────────────
+.detail-items {
+  background: $light;
+}
+
+.item-card {
+  background: $white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  border: 1px solid rgba($navy, 0.08);
+  box-shadow: 0 2px 12px rgba($navy, 0.05);
+  height: 100%;
+  transition: box-shadow 0.25s, transform 0.25s;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba($navy, 0.1);
+    transform: translateY(-3px);
+  }
+}
+
+.item-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1.35rem;
+  }
+}
+
+.item-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.item-desc {
+  font-size: 0.875rem;
+  color: rgba($text, 0.65);
+  line-height: 1.65;
+  margin: 0;
+}
+
+// ── Pricing ───────────────────────────────────────────
+.pricing-section {
+  background: $white;
+  border-top: 1px solid rgba($navy, 0.08);
+}
+
+.pricing-subtitle {
+  font-size: 0.9rem;
+  color: rgba($text, 0.55);
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.pricing-tabs {
+  gap: 0.5rem;
+
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $text;
+    background: rgba($navy, 0.06);
+    border-radius: 8px;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+
+    &.active {
+      background: $navy;
+      color: $white;
+    }
+
+    &:hover:not(.active) {
+      background: rgba($navy, 0.12);
+    }
+  }
+}
+
+.pricing-card {
+  background: $light;
+  border: 2px solid rgba($navy, 0.1);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba($navy, 0.1);
+  }
+
+  &--featured {
+    background: $navy;
+    border-color: $navy;
+
+    .pricing-card__name,
+    .pricing-card__price,
+    .pricing-card__period,
+    .pricing-card__detail {
+      color: $white !important;
+    }
+
+    .pricing-card__divider {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $gold;
+  color: darken($gold, 35%);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 14px;
+  border-radius: 20px;
+}
+
+.pricing-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pricing-card__price {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $text;
+  line-height: 1;
+}
+
+.pricing-card__period {
+  font-size: 0.78rem;
+  color: rgba($text, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card__divider {
+  border-color: rgba($navy, 0.12);
+  margin: 0.75rem 0;
+}
+
+.pricing-card__detail {
+  font-size: 0.82rem;
+  color: rgba($text, 0.7);
+  margin-bottom: 0.35rem;
+  text-align: left;
+}
+
+// ── Info boxes ────────────────────────────────────────
+.info-box {
+  background: $light;
+  border-radius: 12px;
+  padding: 1.75rem;
+  border: 1px solid rgba($navy, 0.08);
+  height: 100%;
+}
+
+.info-box__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.info-box__list {
+  font-size: 0.875rem;
+  color: rgba($text, 0.7);
+  line-height: 1.7;
+  padding-left: 1.25rem;
+
+  li {
+    margin-bottom: 0.4rem;
+  }
+}
+
+// ── Discounts table ───────────────────────────────────
+.discount-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 1rem;
+}
+
+.discount-table {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba($navy, 0.06);
+
+  thead tr {
+    background: $navy;
+
+    th {
+      color: $white;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      padding: 0.85rem 1rem;
+    }
+  }
+
+  tbody tr {
+    transition: background 0.15s;
+
+    &:hover {
+      background: rgba($navy, 0.03);
+    }
+
+    td {
+      font-size: 0.875rem;
+      vertical-align: middle;
+      padding: 0.85rem 1rem;
+      border-color: rgba($navy, 0.07);
+    }
+  }
+}
+
+.badge-discount {
+  background: #d4edda;
+  color: #155724;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+// ── CTA final ─────────────────────────────────────────
+.cta-final {
+  background: linear-gradient(135deg, var(--hero-color, #{$navy}) 0%, #0a2030 100%);
+}
+
+.cta-final__title {
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: $white;
+  margin-bottom: 0.5rem;
+}
+
+.cta-final__sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.btn-cta-primary {
+  background: $gold;
+  color: darken($gold, 40%);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  border: none;
+  transition: background 0.25s, transform 0.2s;
+
+  &:hover {
+    background: darken($gold, 8%);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-cta-outline {
+  background: transparent;
+  color: $white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    color: $white;
+    transform: translateY(-2px);
+  }
+}
+
+// ── Back button ───────────────────────────────────────
+.btn-back {
+  background: $navy;
+  color: $white;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+
+  &:hover {
+    background: darken($navy, 8%);
+    color: $white;
+  }
+}
