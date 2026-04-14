@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     id: 'areas-derecho',
     name: 'Áreas del Derecho',
     shortDescription: 'Asesoría jurídica integral en todas las ramas del derecho colombiano.',
-    icon: 'bi-building-fill-check',
+    icon: 'gavel',
     color: '#1a3a5c',
     items: [
       {
@@ -102,7 +102,7 @@ export const SERVICES: Service[] = [
     id: 'psicologia-forense',
     name: 'Psicología Forense',
     shortDescription: 'Evaluaciones psicológicas especializadas para procesos judiciales y legales.',
-    icon: 'bi-brain',
+    icon: 'Balance',
     color: '#2a7f7f',
     items: [
       {
@@ -183,7 +183,7 @@ export const SERVICES: Service[] = [
     id: 'conciliacion',
     name: 'Centro de Conciliación',
     shortDescription: 'Resolución alternativa de conflictos de manera ágil, neutral y confidencial.',
-    icon: 'bi-handshake-fill',
+    icon: 'Handshake',
     color: '#1a6b8a',
     items: [
       {
@@ -222,7 +222,7 @@ export const SERVICES: Service[] = [
     id: 'investigacion-privada',
     name: 'Investigación Privada',
     shortDescription: 'Investigaciones discretas y documentadas para respaldar sus procesos legales.',
-    icon: 'bi-search',
+    icon: 'content_paste_search',
     color: '#0f4c75',
     items: [
       {
@@ -273,7 +273,7 @@ export const SERVICES: Service[] = [
     id: 'seguros-legales',
     name: 'Seguros Legales',
     shortDescription: 'Planes de afiliación para personas naturales, funcionarios públicos y empresas.',
-    icon: 'bi-patch-check-fill',
+    icon: 'shield',
     color: '#1a5276',
     items: [
       {

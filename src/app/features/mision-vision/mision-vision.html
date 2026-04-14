@@ -1,0 +1,88 @@
+<section id="mision" class="mv-section mb-3 bg-color">
+  <div class="container">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-section">
+      <p class="mv-label">Mision y Vision</p>
+      <h2 class="mv-title">Compromiso con la Excelencia Jurídica</h2>
+      <hr class="mv-divider mx-auto">
+      <p class="mv-card-text mx-auto" style="max-width: 560px;">
+        Más de dos décadas de trayectoria nos respaldan. Defendemos sus
+        intereses con rigor, ética y plena dedicación.
+      </p>
+    </div>
+
+    <!-- Misión y Visión -->
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="mv-card h-100">
+          <div class="mv-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <p class="mv-subtitle">Misión</p>
+          <h3 class="mv-card-title">Nuestra Misión</h3>
+          <p class="mv-card-text">
+            Asesorías e inversiones legal group SAS le proporcionará servicios
+            legales de primer nivel restar, nuestra visión interdisciplinaria,
+            nos permite brindar con calidad un mejor servicio para cada caso que
+            lo requiera, nuestra firma está dedicada a promover la justicia la
+            equidad con el fin de obtener la satisfacción del deber cumplido y
+            contratado por cada cliente.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mv-card h-100">
+          <div class="mv-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+          </div>
+          <p class="mv-subtitle">Visión</p>
+          <h3 class="mv-card-title">Nuestra Visión</h3>
+          <p class="mv-card-text">
+            Asesorías legal group SAS , cuenta con reconocimiento a nivel
+            nacional e internacional como una firma confiable, nuestro objetivo
+            diario es seguir evolucionando con los desafíos legales que se
+            presentan en cada una de las ramas del Derecho, con el fin de
+            ofrecer soluciones integrales, con ética y profesionalismo en cada
+            caso.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Valores -->
+    <div class="mv-values">
+      <div class="text-center mb-4">
+        <p class="mv-label">Lo que nos define</p>
+        <h3 class="mv-card-title" style="font-size: 26px;">Nuestros Valores</h3>
+      </div>
+      <div class="row g-3 justify-content-center"
+        style="max-width: 900px; margin: 0 auto;">
+        <div class="col-md-4" *ngFor="let valor of valores">
+          <div class="mv-value-item">
+            <div class="mv-bullet"></div>
+            <p class="mv-value-text">
+              <strong>{{ valor.titulo }}</strong> — {{ valor.descripcion }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cita -->
+    <p class="mv-quote">
+      "La justicia no es solo una norma — es un compromiso que renovamos cada día."
+    </p>
+
+  </div>
+</section>

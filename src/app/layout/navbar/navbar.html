@@ -1,16 +1,25 @@
 <nav class="custom-navbar" [class.scrolled]="scrolled">
   <div class="container navbar-content">
-    <a class="navbar-brand" routerLink="/">LegalFirm</a>
+    <a class="navbar-brand" routerLink="/">LegalGroup</a>
 
-    <ul class="nav-links">
-      <li><a [routerLink]="['/']" fragment="home">Inicio</a></li>
-      <li><a [routerLink]="['/']" fragment="about">Sobre nosotros</a></li>
-      <li><a [routerLink]="['/']" fragment="services">Servicios</a></li>
-      <li><a [routerLink]="['/']" fragment="contact">Contacto</a></li>
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li><a [routerLink]="['/']" fragment="home" (click)="menuOpen = false">Inicio</a></li>
+      <li><a [routerLink]="['/']" fragment="about" (click)="menuOpen = false">Sobre nosotros</a></li>
+      <li><a [routerLink]="['/']" fragment="mision" (click)="menuOpen = false">Misión y Visión</a></li>
+      <li><a [routerLink]="['/']" fragment="services" (click)="menuOpen = false">Servicios</a></li>
+      <li><a [routerLink]="['/']" fragment="contact" (click)="menuOpen = false">Contacto</a></li>
     </ul>
 
-    <button class="theme-toggle" (click)="toggleTheme()">
-      {{ isDark ? '☀️' : '🌙' }}
-    </button>
+    <div class="navbar-actions">
+      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Cambiar tema">
+        {{ isDark ? '☀️' : '🌙' }}
+      </button>
+
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+        <span class="bar" [class.animate]="menuOpen"></span>
+        <span class="bar" [class.animate]="menuOpen"></span>
+        <span class="bar" [class.animate]="menuOpen"></span>
+      </button>
+    </div>
   </div>
 </nav>

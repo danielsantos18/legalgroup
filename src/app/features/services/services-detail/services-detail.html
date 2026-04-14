@@ -1,341 +1,347 @@
 @if (notFound) {
-  <div class="container py-5 text-center">
-    <i class="bi bi-exclamation-circle display-3 text-muted"></i>
-    <h3 class="mt-3">Servicio no encontrado</h3>
-    <a routerLink="/servicios" class="btn btn-back mt-3">← Volver a servicios</a>
-  </div>
+<div class="container py-5 text-center">
+  <i class="bi bi-exclamation-circle display-3 text-muted"></i>
+  <h3 class="mt-3">Servicio no encontrado</h3>
+  <a routerLink="/servicios" class="btn btn-back mt-3">← Volver a servicios</a>
+</div>
 }
 
 @if (!notFound && service) {
-  <!-- Hero del servicio -->
-  <section class="detail-hero" [style.--hero-color]="service.color">
-    <div class="hero-pattern"></div>
-    <div class="container position-relative z-1">
-      <div class="row align-items-center py-5 min-vh-hero">
-        <div class="col-lg-8">
-          <a routerLink="/servicios" class="back-link">
-            <i class="bi bi-arrow-left me-2"></i>Todos los servicios
-          </a>
-          <div class="hero-icon-badge mt-3">
-            <i class="bi {{ service.icon }}"></i>
-          </div>
-          <h1 class="detail-title mt-3">{{ service.name }}</h1>
-          <p class="detail-subtitle">{{ service.shortDescription }}</p>
+<!-- Hero del servicio -->
+<section class="detail-hero" [style.--hero-color]="service.color">
+  <div class="container position-relative z-1">
+    <div class="row align-items-center py-5 min-vh-hero">
+      <div class="col-lg-8">
+        <a routerLink="/servicios" class="back-link">
+          <i class="bi bi-arrow-left me-2"></i>Todos los servicios
+        </a>
+        <div class="hero-icon-badge mt-3">
+          <span class="material-symbols-outlined service-card__icon">
+            {{ service.icon }}
+          </span>
         </div>
+        <h1 class="detail-title mt-3">{{ service.name }}</h1>
+        <p class="detail-subtitle">{{ service.shortDescription }}</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Items del servicio -->
-  <section class="detail-items py-5">
-    <div class="container">
-      <div class="section-header mb-4">
-        <h2 class="section-heading">¿En qué podemos ayudarle?</h2>
-        <div class="heading-line" [style.background]="service.color"></div>
-      </div>
-
-      <div class="row g-4">
-        @for (item of service.items; track item.title) {
-          <div class="col-lg-6">
-            <div class="item-card">
-              <div class="item-icon-wrap" [style.background]="service.color + '18'">
-                <i class="bi {{ item.icon }}" [style.color]="service.color"></i>
-              </div>
-              <div class="item-body">
-                <h4 class="item-title">{{ item.title }}</h4>
-                <p class="item-desc">{{ item.description }}</p>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
+<!-- Items del servicio -->
+<section class="detail-items py-5">
+  <div class="container">
+    <div class="section-header mb-4">
+      <h2 class="section-heading">¿En qué podemos ayudarle?</h2>
+      <div class="heading-line" [style.background]="service.color"></div>
     </div>
-  </section>
 
-  <!-- Sección de precios (solo si existe) -->
-  @if (service.pricing) {
-    <section class="pricing-section py-5">
-      <div class="container">
-        <div class="section-header mb-4">
-          <h2 class="section-heading">{{ service.pricing.title }}</h2>
-          @if (service.pricing.subtitle) {
-            <p class="pricing-subtitle">{{ service.pricing.subtitle }}</p>
-          }
-          <div class="heading-line" [style.background]="service.color"></div>
-        </div>
-
-        <!-- Tabs de categoría -->
-        <ul class="nav nav-pills pricing-tabs mb-4" id="pricingTabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link active"
-              data-bs-toggle="pill"
-              data-bs-target="#tab-personal"
-              type="button"
-            >
-              <i class="bi bi-person-fill me-1"></i> Personas Naturales
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              data-bs-toggle="pill"
-              data-bs-target="#tab-militares"
-              type="button"
-            >
-              <i class="bi bi-shield-fill me-1"></i> Militares / Policías / Funcionarios
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              data-bs-toggle="pill"
-              data-bs-target="#tab-empresas"
-              type="button"
-            >
-              <i class="bi bi-building-fill me-1"></i> Empresas
-            </button>
-          </li>
-        </ul>
-
-        <div class="tab-content">
-          <!-- Personas Naturales -->
-          <div class="tab-pane fade show active" id="tab-personal">
-            <div class="row g-3 mb-4">
-              @for (plan of service.pricing.plans; track plan.name) {
-                <div class="col-lg-3 col-md-6">
-                  <div class="pricing-card" [class.pricing-card--featured]="plan.name === 'VIP'">
-                    <div class="pricing-card__badge" *ngIf="plan.name === 'VIP'">Popular</div>
-                    <div class="pricing-card__name">{{ plan.name }}</div>
-                    <div class="pricing-card__price">{{ plan.anualPrice }}</div>
-                    <div class="pricing-card__period">/ año</div>
-                    <hr class="pricing-card__divider" />
-                    <div class="pricing-card__detail">
-                      <i class="bi bi-people-fill me-2"></i>{{ plan.members }}
-                    </div>
-                    <div class="pricing-card__detail">
-                      <i class="bi bi-calendar3 me-2"></i>{{ plan.monthlyPrice }}
-                    </div>
-                  </div>
-                </div>
-              }
-            </div>
+    <div class="row g-4">
+      @for (item of service.items; track item.title) {
+      <div class="col-lg-6">
+        <div class="item-card">
+          <div class="item-icon-wrap" [style.background]="service.color + '18'">
+            <i class="bi {{ item.icon }}" [style.color]="service.color"></i>
           </div>
-
-          <!-- Militares -->
-          <div class="tab-pane fade" id="tab-militares">
-            <div class="row g-3 mb-4">
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Básica</div>
-                  <div class="pricing-card__price">$1.000.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-people-fill me-2"></i>1 afiliado
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$83.400 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card pricing-card--featured">
-                  <div class="pricing-card__badge">Popular</div>
-                  <div class="pricing-card__name">VIP</div>
-                  <div class="pricing-card__price">$2.000.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-people-fill me-2"></i>2 afiliados
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$166.700 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Premium</div>
-                  <div class="pricing-card__price">$3.800.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-people-fill me-2"></i>4 afiliados
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$316.700 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Familiar</div>
-                  <div class="pricing-card__price">$4.500.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-people-fill me-2"></i>5 afiliados
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$375.000 + IVA / mes
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Empresas -->
-          <div class="tab-pane fade" id="tab-empresas">
-            <div class="row g-3 mb-4">
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Básica</div>
-                  <div class="pricing-card__price">$14.400.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-journal-check me-2"></i>30 asesorías
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$1.200.000 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card pricing-card--featured">
-                  <div class="pricing-card__badge">Popular</div>
-                  <div class="pricing-card__name">VIP</div>
-                  <div class="pricing-card__price">$20.400.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-journal-check me-2"></i>50 asesorías
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$1.700.000 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Premium</div>
-                  <div class="pricing-card__price">$30.000.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-journal-check me-2"></i>65 asesorías
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$2.500.000 + IVA / mes
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="pricing-card">
-                  <div class="pricing-card__name">Familiar</div>
-                  <div class="pricing-card__price">$42.000.000</div>
-                  <div class="pricing-card__period">+ IVA / año</div>
-                  <hr class="pricing-card__divider" />
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-journal-check me-2"></i>80 asesorías
-                  </div>
-                  <div class="pricing-card__detail">
-                    <i class="bi bi-calendar3 me-2"></i>$3.500.000 + IVA / mes
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="item-body">
+            <h4 class="item-title">{{ item.title }}</h4>
+            <p class="item-desc">{{ item.description }}</p>
           </div>
         </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
 
-        <!-- Condiciones de afiliación -->
-        <div class="row g-4 mt-2">
-          <div class="col-lg-6">
-            <div class="info-box">
-              <h5 class="info-box__title">
-                <i class="bi bi-clipboard2-check-fill me-2" [style.color]="service.color"></i>
-                Condiciones de Afiliación
-              </h5>
-              <ol class="info-box__list">
-                @for (cond of service.pricing.conditions; track cond) {
-                  <li>{{ cond }}</li>
-                }
-              </ol>
-            </div>
-          </div>
+<!-- Sección de precios (solo si existe) -->
+@if (service.pricing) {
+<section class="pricing-section py-5">
+  <div class="container">
+    <div class="section-header mb-4">
+      <h2 class="section-heading">{{ service.pricing.title }}</h2>
+      @if (service.pricing.subtitle) {
+      <p class="pricing-subtitle">{{ service.pricing.subtitle }}</p>
+      }
+      <div class="heading-line" [style.background]="service.color"></div>
+    </div>
 
-          @if (service.pricing.benefits) {
-            <div class="col-lg-6">
-              <div class="info-box">
-                <h5 class="info-box__title">
-                  <i class="bi bi-star-fill me-2" [style.color]="service.color"></i>
-                  Beneficios del Seguro Legal
-                </h5>
-                <ul class="info-box__list">
-                  @for (benefit of service.pricing.benefits; track benefit) {
-                    <li>{{ benefit }}</li>
-                  }
-                </ul>
+    <!-- Tabs de categoría -->
+    <ul class="nav nav-pills pricing-tabs mb-4" id="pricingTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          data-bs-toggle="pill"
+          data-bs-target="#tab-personal"
+          type="button">
+          <i class="bi bi-person-fill me-1"></i> Personas Naturales
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          data-bs-toggle="pill"
+          data-bs-target="#tab-militares"
+          type="button">
+          <i class="bi bi-shield-fill me-1"></i> Militares / Policías /
+          Funcionarios
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          data-bs-toggle="pill"
+          data-bs-target="#tab-empresas"
+          type="button">
+          <i class="bi bi-building-fill me-1"></i> Empresas
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- Personas Naturales -->
+      <div class="tab-pane fade show active" id="tab-personal">
+        <div class="row g-3 mb-4">
+          @for (plan of service.pricing.plans; track plan.name) {
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card"
+              [class.pricing-card--featured]="plan.name === 'VIP'">
+              <div class="pricing-card__badge"
+                *ngIf="plan.name === 'VIP'">Popular</div>
+              <div class="pricing-card__name">{{ plan.name }}</div>
+              <div class="pricing-card__price">{{ plan.anualPrice }}</div>
+              <div class="pricing-card__period">/ año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-people-fill me-2"></i>{{ plan.members }}
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>{{ plan.monthlyPrice }}
               </div>
             </div>
+          </div>
           }
         </div>
+      </div>
 
-        <!-- Descuentos -->
-        @if (service.pricing.discounts) {
-          <div class="mt-4">
-            <h5 class="discount-heading">
-              <i class="bi bi-tags-fill me-2"></i>Descuentos Exclusivos para Afiliados (50%)
-            </h5>
-            <div class="table-responsive">
-              <table class="table discount-table">
-                <thead>
-                  <tr>
-                    <th>Servicio</th>
-                    <th>Valor Normal</th>
-                    <th>Descuento</th>
-                    <th>Valor Afiliado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (d of service.pricing.discounts; track d.name) {
-                    <tr>
-                      <td class="fw-semibold">{{ d.name }}</td>
-                      <td class="text-muted text-decoration-line-through">{{ d.normalPrice }}</td>
-                      <td>
-                        <span class="badge-discount">{{ d.discount }}</span>
-                      </td>
-                      <td class="fw-bold" [style.color]="service.color">{{ d.totalPrice }}</td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
+      <!-- Militares -->
+      <div class="tab-pane fade" id="tab-militares">
+        <div class="row g-3 mb-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Básica</div>
+              <div class="pricing-card__price">$1.000.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-people-fill me-2"></i>1 afiliado
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$83.400 + IVA / mes
+              </div>
             </div>
           </div>
-        }
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card pricing-card--featured">
+              <div class="pricing-card__badge">Popular</div>
+              <div class="pricing-card__name">VIP</div>
+              <div class="pricing-card__price">$2.000.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-people-fill me-2"></i>2 afiliados
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$166.700 + IVA / mes
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Premium</div>
+              <div class="pricing-card__price">$3.800.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-people-fill me-2"></i>4 afiliados
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$316.700 + IVA / mes
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Familiar</div>
+              <div class="pricing-card__price">$4.500.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-people-fill me-2"></i>5 afiliados
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$375.000 + IVA / mes
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
-  }
 
-  <!-- CTA final -->
-  <section class="cta-final py-5" [style.--hero-color]="service.color">
-    <div class="container text-center">
-      <h3 class="cta-final__title">¿Listo para proteger sus intereses?</h3>
-      <p class="cta-final__sub">
-        Agenda una consulta con nuestros especialistas en {{ service.name }}.
-      </p>
-      <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <a href="tel:+573042484097" class="btn btn-cta-primary">
-          <i class="bi bi-telephone-fill me-2"></i>Llamar ahora
-        </a>
-        <a href="mailto:Oficina@asesoriaslegalgroup.com" class="btn btn-cta-outline">
-          <i class="bi bi-envelope-fill me-2"></i>Escribir correo
-        </a>
-        <a routerLink="/servicios" class="btn btn-cta-outline">
-          <i class="bi bi-grid-fill me-2"></i>Ver todos los servicios
-        </a>
+      <!-- Empresas -->
+      <div class="tab-pane fade" id="tab-empresas">
+        <div class="row g-3 mb-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Básica</div>
+              <div class="pricing-card__price">$14.400.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-journal-check me-2"></i>30 asesorías
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$1.200.000 + IVA / mes
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card pricing-card--featured">
+              <div class="pricing-card__badge">Popular</div>
+              <div class="pricing-card__name">VIP</div>
+              <div class="pricing-card__price">$20.400.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-journal-check me-2"></i>50 asesorías
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$1.700.000 + IVA / mes
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Premium</div>
+              <div class="pricing-card__price">$30.000.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-journal-check me-2"></i>65 asesorías
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$2.500.000 + IVA / mes
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="pricing-card">
+              <div class="pricing-card__name">Familiar</div>
+              <div class="pricing-card__price">$42.000.000</div>
+              <div class="pricing-card__period">+ IVA / año</div>
+              <hr class="pricing-card__divider" />
+              <div class="pricing-card__detail">
+                <i class="bi bi-journal-check me-2"></i>80 asesorías
+              </div>
+              <div class="pricing-card__detail">
+                <i class="bi bi-calendar3 me-2"></i>$3.500.000 + IVA / mes
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- Condiciones de afiliación -->
+    <div class="row g-4 mt-2">
+      <div class="col-lg-6">
+        <div class="info-box">
+          <h5 class="info-box__title">
+            <i class="bi bi-clipboard2-check-fill me-2"
+              [style.color]="service.color"></i>
+            Condiciones de Afiliación
+          </h5>
+          <ol class="info-box__list">
+            @for (cond of service.pricing.conditions; track cond) {
+            <li>{{ cond }}</li>
+            }
+          </ol>
+        </div>
+      </div>
+
+      @if (service.pricing.benefits) {
+      <div class="col-lg-6">
+        <div class="info-box">
+          <h5 class="info-box__title">
+            <i class="bi bi-star-fill me-2" [style.color]="service.color"></i>
+            Beneficios del Seguro Legal
+          </h5>
+          <ul class="info-box__list">
+            @for (benefit of service.pricing.benefits; track benefit) {
+            <li>{{ benefit }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Descuentos -->
+    @if (service.pricing.discounts) {
+    <div class="mt-4">
+      <h5 class="discount-heading">
+        <i class="bi bi-tags-fill me-2"></i>Descuentos Exclusivos para Afiliados
+        (50%)
+      </h5>
+      <div class="table-responsive">
+        <table class="table discount-table">
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Valor Normal</th>
+              <th>Descuento</th>
+              <th>Valor Afiliado</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (d of service.pricing.discounts; track d.name) {
+            <tr>
+              <td class="fw-semibold">{{ d.name }}</td>
+              <td class="text-decoration-line-through">{{
+                d.normalPrice }}</td>
+              <td>
+                <span class="badge-discount">{{ d.discount }}</span>
+              </td>
+              <td class="fw-bold">{{ d.totalPrice
+                }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+}
+
+<!-- CTA final -->
+<section class="cta-final py-5" [style.--hero-color]="service.color">
+  <div class="container text-center">
+    <h3 class="cta-final__title">¿Listo para proteger sus intereses?</h3>
+    <p class="cta-final__sub">
+      Agenda una consulta con nuestros especialistas en {{ service.name }}.
+    </p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <a href="tel:+573042484097" class="btn btn-cta-primary">
+        <i class="bi bi-telephone-fill me-2"></i>Llamar ahora
+      </a>
+      <a href="mailto:Oficina@asesoriaslegalgroup.com"
+        class="btn btn-cta-outline">
+        <i class="bi bi-envelope-fill me-2"></i>Escribir correo
+      </a>
+      <a routerLink="/servicios" class="btn btn-cta-outline">
+        <i class="bi bi-grid-fill me-2"></i>Ver todos los servicios
+      </a>
+    </div>
+  </div>
+</section>
 }

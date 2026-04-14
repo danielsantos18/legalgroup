@@ -14,6 +14,12 @@ export class NavbarComponent {
   isDark = false;
   scrolled = false;
 
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
   // 🌗 Cambiar tema
   toggleTheme() {
     this.isDark = !this.isDark;

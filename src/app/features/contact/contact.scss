@@ -3,8 +3,8 @@
   .contact-card,
   .form-card,
   .map-card {
-    background: var(--card-bg);
-    border-radius: 20px;
+    background: var(--bg-color);
+    border-radius: 10px;
     padding: 25px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(var(--text-rgb), 0.2);
@@ -98,7 +98,7 @@
 }
 
 .social-container {
-  background-color: var(--footer-bg);
+  background-color: var(--bg-color);
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -253,4 +253,40 @@
 
 .rotate {
   transform: rotate(180deg);
+}
+
+// ── Contact strip ─────────────────────────────────────
+.contact-strip {
+  background: linear-gradient(135deg, #1a3a5c 0%, #0f2740 60%, #0d3d3d 100%);
+  border-radius: 5px;
+}
+
+.contact-strip__title {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff; // fijo: sobre fondo oscuro
+  margin-bottom: 0.3rem;
+}
+
+.contact-strip__sub {
+  color: rgba(255, 255, 255, 0.7); // fijo: mismo motivo
+  font-size: 0.95rem;
+}
+
+.btn-contact {
+  background: var(--primary-color); // ← tu gold global
+  color: var(--bg-color); // contraste dinámico
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+  transition: background 0.25s, transform 0.2s;
+  border: none;
+
+  &:hover {
+    filter: brightness(0.9); // reemplaza darken() de Sass con CSS puro
+    transform: translateY(-2px);
+  }
 }

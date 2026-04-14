@@ -1,42 +1,60 @@
 <section id="contact" class="contact-section py-5">
   <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title">Contáctanos</h2>
-      <p class="section-subtitle">Visítanos o escríbenos, estamos para ayudarte</p>
-    </div>
+
+    <section class="contact-strip py-5 mb-3">
+      <div class="contact-container">
+        <div class="row align-items-center justify-content-between g-3">
+          <div class="text-center">
+            <h4 class="contact-strip__title">¿Necesita asesoría legal?</h4>
+            <p class="contact-strip__sub mb-0">
+              Contáctenos hoy. Nuestro equipo está listo para acompañarle.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="row">
-      <!-- 📌 INFO IZQUIERDA -->
+      <!-- INFO IZQUIERDA -->
       <div class="col-lg-4 mb-4">
         <div class="contact-card">
           <h5>Información de contacto</h5>
 
           <div class="contact-item">
-            <span>📍</span>
+            <span class="material-symbols-outlined service-card__icon">
+              Apartment
+            </span>
             <div>
               <strong>Oficinas Principales</strong>
-              <p>Centro Comercial Plaza de las Américas<br />Bogotá, Colombia</p>
+              <p>Edificio Banco Popular Piso 6 Ofc 602<br />Cartagena de
+                Indias, Bolívar – Colombia </p>
             </div>
           </div>
 
           <div class="contact-item">
-            <span>📞</span>
+            <span class="material-symbols-outlined service-card__icon">
+              Phone
+            </span>
             <div>
               <strong>Teléfonos</strong>
-              <p>+57 300 000 0000<br />+57 300 000 0000</p>
+              <p>+57 304 2484097</p>
             </div>
           </div>
 
           <div class="contact-item">
-            <span>✉️</span>
+            <span class="material-symbols-outlined service-card__icon">
+              Email
+            </span>
             <div>
               <strong>Correo</strong>
-              <p>contacto@legalfirm.com</p>
+              <p>@asesoriaslegalgroup</p>
             </div>
           </div>
 
           <div class="contact-item">
-            <span>🕒</span>
+            <span class="material-symbols-outlined service-card__icon">
+              timer
+            </span>
             <div>
               <strong>Horario</strong>
               <p>Lunes a Viernes: 9:00 - 18:00</p>
@@ -57,21 +75,20 @@
 
             <!-- LinkedIn -->
             <a
-              href="https://www.linkedin.com/in/yumile-florian-paez-037763303?trk=contact-info"
+              href="https://www.linkedin.com/"
+              target="_blank"
               class="social-card"
-              style="--color: #0077b5"
-            >
+              style="--color: #0077b5">
               <i class="bi bi-linkedin social-icon"></i>
               <span class="social-tooltip">LinkedIn</span>
             </a>
 
             <!-- Instagram -->
             <a
-              href="https://www.instagram.com/dra.yumileflorian/"
+              href="https://www.instagram.com/"
               target="_blank"
               class="social-card"
-              style="--color: #e1306c"
-            >
+              style="--color: #e1306c">
               <i class="bi bi-instagram social-icon"></i>
               <span class="social-tooltip">Instagram</span>
             </a>
@@ -85,11 +102,10 @@
 
             <!-- WhatsApp -->
             <a
-              href="https://wa.me/573227179819"
+              href="https://wa.me/573042484097"
               target="_blank"
               class="social-card"
-              style="--color: #25d366"
-            >
+              style="--color: #25d366">
               <i class="bi bi-whatsapp social-icon"></i>
               <span class="social-tooltip">WhatsApp</span>
             </a>
@@ -109,11 +125,9 @@
         <!-- 🗺 MAPA -->
         <div class="map-card mb-4">
           <iframe
-            src="https://maps.google.com/maps?q=plaza%20de%20las%20americas%20bogota&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            frameborder="0"
-            allowfullscreen
-          >
-          </iframe>
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.981545509769!2d-75.55087132429948!3d10.423038865611254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef62f9e6960b86d%3A0x4efca1aa45128bd4!2sInvercolombia!5e0!3m2!1sen!2sco!4v1776192602631!5m2!1sen!2sco"
+            width="600" height="450" style="border:0;" allowfullscreen
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <!-- 📝 FORMULARIO -->
@@ -139,7 +153,8 @@
               <ul class="options" [class.active]="isOpen">
                 <li (click)="selectOption('Consulta legal')">Consulta legal</li>
                 <li (click)="selectOption('Asesoría')">Asesoría</li>
-                <li (click)="selectOption('Defensa jurídica')">Defensa jurídica</li>
+                <li (click)="selectOption('Defensa jurídica')">Defensa
+                  jurídica</li>
               </ul>
             </div>
           </div>
