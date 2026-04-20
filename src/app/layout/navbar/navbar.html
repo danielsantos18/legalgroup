@@ -1,6 +1,7 @@
 <nav class="custom-navbar" [class.scrolled]="scrolled">
   <div class="container navbar-content">
-    <a class="navbar-brand" routerLink="/">LegalGroup</a>
+    <img src="/legalgroup_logo.png" class="logo-img">
+    <a class="navbar-brand secondary-color" routerLink="/">LegalGroup</a>
 
     <ul class="nav-links" [class.open]="menuOpen">
       <li><a [routerLink]="['/']" fragment="home" (click)="menuOpen = false">Inicio</a></li>

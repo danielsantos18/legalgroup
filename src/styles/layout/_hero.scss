@@ -1,64 +1,319 @@
+// ─── Animations ───────────────────────────────────────────────────────────────
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ringRotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ringRotateReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.55); }
+  50%       { box-shadow: 0 0 0 6px rgba(201, 169, 110, 0); }
+}
+
+// ─── Base ─────────────────────────────────────────────────────────────────────
 .hero {
   min-height: 100vh;
   position: relative;
-
   display: flex;
   align-items: center;
+  padding: 100px 0 60px;
+  overflow: hidden;
 
-  padding-top: 500px;
+  // Rompe el container de Bootstrap para ocupar todo el ancho
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-  /* 🔥 overlay elegante */
-  &::after {
+  // Imagen sin overlay — la foto se ve completa
+  background: url('/banner_plus.png') center / cover no-repeat;
+
+  --text-color: #f2f9fc;
+  --text-rgb: 242, 249, 252;
+  color: var(--text-color);
+
+  // Degradado solo en el lado izquierdo para legibilidad del texto
+  &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      circle at top,
-      rgba(201, 169, 110, 0.1),
+    background: linear-gradient(
+      to right,
+      rgba(5, 8, 30, 0.82) 0%,
+      rgba(5, 8, 30, 0.55) 45%,
       transparent 70%
     );
     pointer-events: none;
   }
 
-  .hero-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    font-size: 0.8rem;
-    border-radius: 20px;
+  // Glow dorado decorativo: esquina superior izquierda, lejos de las personas
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    width: 40%;
+    height: 50%;
+    background: radial-gradient(ellipse, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
 
-    background: rgba(201, 169, 110, 0.15);
+// ─── Decorative circles ───────────────────────────────────────────────────────
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+
+  &--1 { width: 500px; height: 500px; top: -160px; left: -120px; }
+  &--2 { width: 300px; height: 300px; bottom: 60px;  left: -60px;  border-color: rgba(201, 169, 110, 0.07); }
+  &--3 { width: 180px; height: 180px; top: 40%;      left: 5%;     border-color: rgba(201, 169, 110, 0.05); }
+}
+
+// ─── Badge ────────────────────────────────────────────────────────────────────
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.28);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: heroFadeUp 0.8s ease both;
+}
+
+.hero__badge-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  flex-shrink: 0;
+  animation: pulseDot 2s ease infinite;
+}
+
+// ─── Title ────────────────────────────────────────────────────────────────────
+.hero__title {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: #f2f9fc;
+  margin-bottom: 1.25rem;
+  animation: heroFadeUp 0.8s 0.12s ease both;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+
+  span { color: var(--primary-color); }
+}
+
+// ─── Subtitle ─────────────────────────────────────────────────────────────────
+.hero__subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  opacity: 0.75;
+  max-width: 480px;
+  color: #f2f9fc;
+  margin-bottom: 2rem;
+  animation: heroFadeUp 0.8s 0.22s ease both;
+}
+
+// ─── Actions ──────────────────────────────────────────────────────────────────
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: heroFadeUp 0.8s 0.32s ease both;
+}
+
+.hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #000 !important;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(201, 169, 110, 0.45);
+  }
+}
+
+.hero__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #f2f9fc !important;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color) !important;
+    background: rgba(201, 169, 110, 0.1);
+  }
+}
+
+// ─── Emblem (decorativo, zona oscura inferior izquierda) ─────────────────────
+.hero__emblem {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+
+  &--outer {
+    inset: 0;
+    border-color: rgba(201, 169, 110, 0.6);
+    border-top-color: rgba(201, 169, 110, 0.9);
+    animation: ringRotate 16s linear infinite;
+  }
+
+  &--mid {
+    inset: 50px;
+    border-color: rgba(201, 169, 110, 0.12);
+    border-right-color: rgba(201, 169, 110, 0.5);
+    animation: ringRotateReverse 11s linear infinite;
+  }
+
+  &--inner {
+    inset: 100px;
+    border-color: rgba(201, 169, 110, 0.1);
+  }
+}
+
+.hero__emblem-core {
+  position: absolute;
+  inset: 120px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.08);
+  border: 1px solid rgba(201, 169, 110, 0.22);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 3.2rem;
     color: var(--primary-color);
-
-    letter-spacing: 1px;
+    animation: iconFloat 4s ease-in-out infinite;
   }
+}
 
-  .hero-title {
-    font-size: 3rem;
+// ─── Stats bar ────────────────────────────────────────────────────────────────
+.hero__stats {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 1.75rem 2.5rem;
+  background: rgba(8, 15, 46, 0.55);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  animation: heroFadeUp 0.8s 0.48s ease both;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+}
+
+.hero__stat {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+
+  &-number {
+    display: block;
+    font-size: 2.1rem;
     font-weight: 800;
-    line-height: 1.2;
-
-    span {
-      color: var(--primary-color);
-    }
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 0.35rem;
   }
 
-  .hero-subtitle {
-    font-size: 1.1rem;
-    opacity: 0.85;
-    max-width: 500px;
+  &-label {
+    display: block;
+    font-size: 0.78rem;
+    color: rgba(242, 249, 252, 0.65);
+    letter-spacing: 0.4px;
   }
 
-  .hero-actions {
-    .btn {
-      padding: 10px 22px;
-      font-weight: 500;
-    }
+  &-sep {
+    width: 1px;
+    height: 44px;
+    background: rgba(201, 169, 110, 0.2);
+    flex-shrink: 0;
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: 991.98px) {
+  .hero { padding: 110px 0 60px; text-align: center; }
+  .hero__subtitle { margin-inline: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__stat-sep { display: none; }
+  .hero__stats { gap: 1rem; }
+  .hero__emblem { display: none; }
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    background-position: 65% top;
+    min-height: 100svh;
+    padding: 110px 0 40px;
   }
 
-  .hero-image {
-    img {
-      max-width: 100%;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-    }
+  .hero::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 8, 30, 0.72) 0%,
+      rgba(5, 8, 30, 0.55) 60%,
+      rgba(5, 8, 30, 0.68) 100%
+    );
   }
 }

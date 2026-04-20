@@ -4,7 +4,6 @@ body.dark-theme {
   --text-color: #ffffff;
   --text-rgb: 255, 255, 255;
   --card-bg: rgba(255, 255, 255, 0.05);
-  --primary-color: #c9a96e;
   --shadow-color: rgba(0, 0, 0, 0.5);
   --bg-gradient: radial-gradient(circle at center,
       #0d1b2a 10%,
@@ -12,17 +11,17 @@ body.dark-theme {
       #000000 100%);
 
   /* 🦶 Footer - dark theme */
-  --footer-bg:              #0d1117;
-  --footer-border:          rgba(255, 255, 255, 0.06);
-  --footer-text:            #c9cdd4;
-  --footer-text-muted:      #7a8394;
-  --footer-text-faint:      #4a5160;
-  --footer-brand-color:     #e8dcc8;
-  --footer-accent:          #b8a98a;
-  --footer-accent-border:   rgba(184, 169, 138, 0.3);
-  --footer-accent-divider:  rgba(184, 169, 138, 0.2);
-  --footer-icon-bg:         rgba(184, 169, 138, 0.08);
-  --footer-icon-border:     rgba(184, 169, 138, 0.15);
+  --footer-bg: #0d1117;
+  --footer-border: rgba(255, 255, 255, 0.06);
+  --footer-text: #fff;
+  --footer-text-muted: #fff;
+  --footer-text-faint: #fff;
+  --footer-brand-color: #e8dcc8;
+  --footer-accent: #1d89a6;
+  --footer-accent-border: rgba(184, 169, 138, 0.3);
+  --footer-accent-divider: rgba(184, 169, 138, 0.2);
+  --footer-icon-bg: rgba(184, 169, 138, 0.08);
+  --footer-icon-border: rgba(184, 169, 138, 0.15);
 
   color: var(--text-color);
 }
@@ -32,26 +31,22 @@ body.light-theme {
   --text-color: #000000;
   --text-rgb: 0, 0, 0;
   --card-bg: #f8f9fa;
-  --primary-color: #c9a96e;
 
   /* 🦶 Footer - light theme */
-  --footer-bg:              #f4f1ec;
-  --footer-border:          rgba(0, 0, 0, 0.07);
-  --footer-text:            #3a3530;
-  --footer-text-muted:      #7a7570;
-  --footer-text-faint:      #aaa49e;
-  --footer-brand-color:     #1a1714;
-  --footer-accent:          #9a7c4a;
-  --footer-accent-border:   rgba(154, 124, 74, 0.3);
-  --footer-accent-divider:  rgba(154, 124, 74, 0.2);
-  --footer-icon-bg:         rgba(154, 124, 74, 0.08);
-  --footer-icon-border:     rgba(154, 124, 74, 0.15);
+  --footer-bg: #E0E0E0;
+  --footer-border: rgba(0, 0, 0, 0.07);
+  --footer-text: #000;
+  --footer-text-muted: #000;
+  --footer-text-faint: #000;
+  --footer-brand-color: #1a1714;
+  --footer-accent: #1d89a6;
+  --footer-accent-border: rgba(154, 124, 74, 0.3);
+  --footer-accent-divider: rgba(154, 124, 74, 0.2);
+  --footer-icon-bg: rgba(154, 124, 74, 0.08);
+  --footer-icon-border: rgba(154, 124, 74, 0.15);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap');
-
 .lf-footer {
-  font-family: 'DM Sans', sans-serif;
   background: var(--footer-bg);
   color: var(--footer-text);
   padding: 64px 0 0;
@@ -111,11 +106,13 @@ body.light-theme {
   }
 
   &__heading {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    /* antes 0.7rem */
+    font-weight: 700;
+    /* bold real */
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--footer-accent);
-    font-weight: 500;
     margin: 0 0 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--footer-accent-divider);

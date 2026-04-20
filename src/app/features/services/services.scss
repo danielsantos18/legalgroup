@@ -1,7 +1,10 @@
 // ── Hero ──────────────────────────────────────────────
 .services-hero {
   position: relative;
-  background: linear-gradient(135deg, #1a3a5c 0%, #0f2740 60%, #0d3d3d 100%);
+  background: linear-gradient(135deg,
+      #0e1a6d 0%,
+      #246ba5 50%,
+      #25a7b7 100%);
   min-height: 300px;
   display: flex;
   align-items: center;
@@ -23,7 +26,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--primary-color);   // ← tu gold/dorado global
+  color: var(--primary-color); // ← tu gold/dorado global
   margin-bottom: 0.75rem;
 }
 
@@ -31,14 +34,14 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
-  color: #ffffff;                // fijo: siempre blanco sobre el hero oscuro
+  color: #ffffff; // fijo: siempre blanco sobre el hero oscuro
   line-height: 1.15;
   margin-bottom: 1rem;
 }
 
 .services-subtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75); // fijo: mismo motivo
+  color: #fff;
   line-height: 1.7;
   max-width: 560px;
   margin: 0 auto;
@@ -70,10 +73,10 @@
 }
 
 .service-card {
-  background: var(--card-bg);                         // ← adapta al tema
+  background: var(--card-bg) !important; // ← adapta al tema
   border-radius: 14px;
   padding: 2rem 1.75rem 1.5rem;
-  border: 1px solid rgba(var(--text-rgb), 0.08);      // ← usa tu --text-rgb
+  border: 1px solid rgba(var(--text-rgb), 0.08); // ← usa tu --text-rgb
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
@@ -96,7 +99,7 @@
   width: 56px;
   height: 56px;
   border-radius: 12px;
-  background: rgba(var(--text-rgb), 0.05);            // ← usa tu --text-rgb
+  background: rgba(var(--text-rgb), 0.05); // ← usa tu --text-rgb
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +108,7 @@
 
 .service-card__icon {
   font-size: 1.6rem;
-  color: var(--text-color);                           // ← adapta al tema
+  color: var(--text-color); // ← adapta al tema
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -117,14 +120,14 @@
   font-family: Georgia, serif;
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-color);                           // ← adapta al tema
+  color: var(--text-color); // ← adapta al tema
   margin-bottom: 0.6rem;
   line-height: 1.3;
 }
 
 .service-card__desc {
   font-size: 0.9rem;
-  color: rgba(var(--text-rgb), 0.65);                 // ← usa tu --text-rgb
+  color: rgba(var(--text-rgb), 0.9); // ← usa tu --text-rgb
   line-height: 1.65;
   margin-bottom: 0;
 }
@@ -132,13 +135,13 @@
 .service-card__footer {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(var(--text-rgb), 0.07);  // ← usa tu --text-rgb
+  border-top: 1px solid rgba(var(--text-rgb), 0.07); // ← usa tu --text-rgb
 }
 
 .service-card__cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-color);                           // ← adapta al tema
+  color: var(--text-color); // ← adapta al tema
   letter-spacing: 0.02em;
   transition: color 0.25s ease;
 }
@@ -146,14 +149,14 @@
 // ── Contact strip ─────────────────────────────────────
 .contact-strip {
   background: linear-gradient(90deg, #1a3a5c 0%, #0f3555 100%); // fijo: sección de CTA siempre oscura
-  border-top: 3px solid var(--primary-color);                    // ← tu gold global
+  border-top: 3px solid var(--primary-color); // ← tu gold global
 }
 
 .contact-strip__title {
   font-family: Georgia, serif;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #ffffff;               // fijo: sobre fondo oscuro
+  color: #ffffff; // fijo: sobre fondo oscuro
   margin-bottom: 0.3rem;
 }
 
@@ -163,8 +166,8 @@
 }
 
 .btn-contact {
-  background: var(--primary-color);                  // ← tu gold global
-  color: var(--bg-color);                            // contraste dinámico
+  background: var(--primary-color); // ← tu gold global
+  color: var(--bg-color); // contraste dinámico
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 1.75rem;
@@ -174,7 +177,7 @@
   border: none;
 
   &:hover {
-    filter: brightness(0.9);    // reemplaza darken() de Sass con CSS puro
+    filter: brightness(0.9); // reemplaza darken() de Sass con CSS puro
     transform: translateY(-2px);
   }
 }

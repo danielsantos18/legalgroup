@@ -112,7 +112,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--footer-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   display: flex;
@@ -257,7 +257,10 @@
 
 // ── Contact strip ─────────────────────────────────────
 .contact-strip {
-  background: linear-gradient(135deg, #1a3a5c 0%, #0f2740 60%, #0d3d3d 100%);
+  background: linear-gradient(135deg,
+      #0e1a6d 0%,
+      #246ba5 50%,
+      #25a7b7 100%);
   border-radius: 5px;
 }
 
@@ -270,7 +273,7 @@
 }
 
 .contact-strip__sub {
-  color: rgba(255, 255, 255, 0.7); // fijo: mismo motivo
+  color: #fff;
   font-size: 0.95rem;
 }
 

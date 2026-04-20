@@ -17,10 +17,16 @@
     justify-content: space-between;
   }
 
+  .logo-img {
+    height: 40px;
+    /* ajusta este valor */
+    width: auto;
+  }
+
   .navbar-brand {
     font-weight: 700;
     font-size: 1.4rem;
-    color: var(--primary-color);
+    color: var(--secondary-color) !important;
     text-decoration: none;
   }
 

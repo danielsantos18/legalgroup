@@ -1,12 +1,15 @@
 body.light-theme {
-  background-color: $light-bg;
-  color: $text-dark;
+  background-color: #E0E0E0;
+  color: #000;
 }
 
 body.light-theme {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --text-rgb: 0, 0, 0;
-  --card-bg: #f8f9fa;
+  --bg-color: #E0E0E0;
+  --text-color: #000;
+  --text-rgb: 19, 43, 129;
+  --card-bg: #ffffff;
   --primary-color: #c9a96e;
+  --secondary-color: #1d89a6;
+  --border-color: rgba(36, 121, 171, 0.15);
+  --shadow-color: rgba(19, 43, 129, 0.12);
 }

@@ -1,17 +1,19 @@
 body.dark-theme {
-  /* 🎨 Variables */
-  --bg-color: #0d0d0d;
-  --text-color: #ffffff;
-  --text-rgb: 255, 255, 255;
-  --card-bg: rgba(255, 255, 255, 0.05);
+  --bg-color: #080f2e;
+  --text-color: #f2f9fc;
+  --text-rgb: 242, 249, 252;
+  --card-bg: rgba(26, 70, 143, 0.18);
   --primary-color: #c9a96e;
-
-  --shadow-color: rgba(0, 0, 0, 0.5);
+  --secondary-color: #26aab9;
+  --border-color: rgba(124, 176, 214, 0.15);
+  --shadow-color: rgba(5, 8, 30, 0.7);
 
   --bg-gradient: radial-gradient(circle at center,
-      #0d1b2a 10%,
-      #05070d 40%,
-      #000000 100%);
+      #162057 0%,
+      #0a1338 50%,
+      #050c20 100%);
 
   color: var(--text-color);
+  background: var(--bg-gradient);
+
 }

@@ -1,0 +1,97 @@
+<section id="team" class="team">
+  <div class="container">
+    <div class="team__header">
+      <h3 class="team__eyebrow">Nuestro Equipo</h3>
+      <h2 class="team__title">Profesionales a tu servicio</h2>
+      <p class="team__subtitle">
+        Expertos comprometidos con la excelencia jurídica y el bienestar de cada cliente
+      </p>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="team__scene"
+    (pointerenter)="onPointerEnter($event)"
+    (pointerleave)="onPointerLeave($event)"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)">
+
+    <button class="team__nav team__nav--prev" (click)="prev()" aria-label="Anterior">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div class="team__track">
+      @for (member of members; track member.id; let i = $index) {
+        <article
+          class="team__card"
+          [attr.data-state]="getCardState(i)"
+          (click)="openModal(member)"
+          role="button"
+          [attr.aria-label]="'Ver perfil de ' + member.name">
+
+          <div class="team__card-photo">
+            <img [src]="member.photo" [alt]="member.name" loading="lazy" />
+            <div class="team__card-overlay">
+              <span class="team__card-cta">
+                <i class="bi bi-person-lines-fill"></i> Ver perfil
+              </span>
+            </div>
+          </div>
+
+          <div class="team__card-body">
+            <p class="team__card-role">{{ member.role }}</p>
+            <h3 class="team__card-name">{{ member.name }}</h3>
+            <p class="team__card-bio">{{ member.shortBio }}</p>
+          </div>
+
+        </article>
+      }
+    </div>
+
+    <button class="team__nav team__nav--next" (click)="next()" aria-label="Siguiente">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Dots -->
+  <div class="team__dots" role="tablist">
+    @for (member of members; track member.id; let i = $index) {
+      <button
+        class="team__dot"
+        [class.active]="i === activeIndex()"
+        (click)="goTo(i)"
+        [attr.aria-label]="'Ir a ' + member.name">
+      </button>
+    }
+  </div>
+
+</section>
+
+<!-- Modal -->
+@if (selectedMember()) {
+  <div class="team__overlay" [class.closing]="isClosing()" (click)="closeModal()" role="dialog" aria-modal="true">
+    <div class="team__modal" [class.closing]="isClosing()" (click)="$event.stopPropagation()">
+
+      <button class="team__modal-close" (click)="closeModal()" aria-label="Cerrar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="team__modal-photo">
+        <img [src]="selectedMember()!.photo" [alt]="selectedMember()!.name" />
+      </div>
+
+      <div class="team__modal-content">
+        <span class="team__modal-role">{{ selectedMember()!.role }}</span>
+        <h2 class="team__modal-name">{{ selectedMember()!.name }}</h2>
+        <div class="team__modal-divider"></div>
+        <p class="team__modal-bio" style="text-align: justify;">{{ selectedMember()!.fullBio }}</p>
+        <div class="team__modal-tags">
+          @for (spec of selectedMember()!.specialties; track spec) {
+            <span class="team__tag">{{ spec }}</span>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+}

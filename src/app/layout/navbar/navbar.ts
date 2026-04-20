@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -13,24 +13,29 @@ export class NavbarComponent {
 
   isDark = false;
   scrolled = false;
-
   menuOpen = false;
 
-  toggleMenu() {
+  constructor(private el: ElementRef) {}
+
+  toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
 
-  // 🌗 Cambiar tema
-  toggleTheme() {
+  toggleTheme(): void {
     this.isDark = !this.isDark;
-
     document.body.classList.toggle('dark-theme', this.isDark);
     document.body.classList.toggle('light-theme', !this.isDark);
   }
 
-  // 🔥 Detectar scroll
-  @HostListener('window:scroll', [])
-  onScroll() {
+  @HostListener('window:scroll')
+  onScroll(): void {
     this.scrolled = window.scrollY > 50;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (this.menuOpen && !this.el.nativeElement.contains(event.target)) {
+      this.menuOpen = false;
+    }
   }
 }
