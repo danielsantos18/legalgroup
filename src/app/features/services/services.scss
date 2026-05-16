@@ -26,7 +26,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--primary-color); // ← tu gold/dorado global
+  color: var(--secondary-color);
   margin-bottom: 0.75rem;
 }
 
@@ -149,7 +149,7 @@
 // ── Contact strip ─────────────────────────────────────
 .contact-strip {
   background: linear-gradient(90deg, #1a3a5c 0%, #0f3555 100%); // fijo: sección de CTA siempre oscura
-  border-top: 3px solid var(--primary-color); // ← tu gold global
+  border-top: 3px solid var(--secondary-color);
 }
 
 .contact-strip__title {
@@ -166,8 +166,8 @@
 }
 
 .btn-contact {
-  background: var(--primary-color); // ← tu gold global
-  color: var(--bg-color); // contraste dinámico
+  background: var(--secondary-color);
+  color: #fff;
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 1.75rem;

@@ -45,7 +45,7 @@
       transition: 0.3s;
 
       &:hover {
-        color: var(--primary-color);
+        color: var(--secondary-color);
       }
 
       &::after {
@@ -55,7 +55,7 @@
         left: 0;
         width: 0%;
         height: 2px;
-        background: var(--primary-color);
+        background: var(--secondary-color);
         transition: 0.3s;
       }
 
@@ -82,7 +82,7 @@
     line-height: 1;
 
     &:hover {
-      background: var(--primary-color);
+      background: var(--secondary-color);
     }
   }
 }
@@ -106,7 +106,7 @@
     color: #fff;
 
     &:hover {
-      color: var(--primary-color);
+      color: var(--secondary-color);
     }
   }
 

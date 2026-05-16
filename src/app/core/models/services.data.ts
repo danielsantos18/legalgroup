@@ -17,6 +17,7 @@ export interface Service {
   shortDescription: string;
   icon: string;
   color: string;
+  heroImage: string;
   items: ServiceItem[];
   pricing?: {
     title: string;
@@ -35,6 +36,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Asesoría jurídica integral en todas las ramas del derecho colombiano.',
     icon: 'gavel',
     color: '#1a3a5c',
+    heroImage: '/areas-derecho.webp',
     items: [
       {
         title: 'Derecho Corporativo y Comercial',
@@ -104,6 +106,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Evaluaciones psicológicas especializadas para procesos judiciales y legales.',
     icon: 'Balance',
     color: '#2a7f7f',
+    heroImage: '/psicologia-forense.jpg',
     items: [
       {
         title: 'Evaluación de Credibilidad y Veracidad del Testimonio',
@@ -185,6 +188,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Resolución alternativa de conflictos de manera ágil, neutral y confidencial.',
     icon: 'Handshake',
     color: '#1a6b8a',
+    heroImage: '/centro%20de%20conciliacion.jpg',
     items: [
       {
         title: 'Mediación y Conciliación',
@@ -224,6 +228,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Investigaciones discretas y documentadas para respaldar sus procesos legales.',
     icon: 'content_paste_search',
     color: '#0f4c75',
+    heroImage: '/investigacion-privada.jpg',
     items: [
       {
         title: 'Investigaciones de Antecedentes',
@@ -275,6 +280,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Planes de afiliación para personas naturales, funcionarios públicos y empresas.',
     icon: 'shield',
     color: '#1a5276',
+    heroImage: '/seguros-legales.jpg',
     items: [
       {
         title: 'Reconocimiento y Reliquidación de Retiro',

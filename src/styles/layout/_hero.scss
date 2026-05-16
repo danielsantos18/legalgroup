@@ -37,7 +37,7 @@
   margin-right: calc(50% - 50vw);
 
   // Imagen sin overlay — la foto se ve completa
-  background: url('/banner_plus.png') center / cover no-repeat;
+  background: url('/banner-ia.png') center / cover no-repeat;
 
   --text-color: #f2f9fc;
   --text-rgb: 242, 249, 252;
@@ -97,7 +97,7 @@
   border-radius: 100px;
   background: rgba(201, 169, 110, 0.12);
   border: 1px solid rgba(201, 169, 110, 0.28);
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-size: 0.75rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -111,7 +111,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   flex-shrink: 0;
   animation: pulseDot 2s ease infinite;
 }
@@ -127,7 +127,7 @@
   animation: heroFadeUp 0.8s 0.12s ease both;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 
-  span { color: var(--primary-color); }
+  span { color: var(--secondary-color); }
 }
 
 // ─── Subtitle ─────────────────────────────────────────────────────────────────
@@ -157,8 +157,8 @@
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 8px;
-  background: var(--primary-color);
-  color: #000 !important;
+  background: var(--secondary-color);
+  color: #fff !important;
   border: none;
   text-decoration: none;
   cursor: pointer;
@@ -166,7 +166,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(201, 169, 110, 0.45);
+    box-shadow: 0 8px 28px rgba(29, 137, 166, 0.45);
   }
 }
 
@@ -186,9 +186,9 @@
   transition: border-color 0.2s, background 0.2s, color 0.2s;
 
   &:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color) !important;
-    background: rgba(201, 169, 110, 0.1);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color) !important;
+    background: rgba(29, 137, 166, 0.12);
   }
 }
 
@@ -242,7 +242,7 @@
 
   i {
     font-size: 3.2rem;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     animation: iconFloat 4s ease-in-out infinite;
   }
 }
@@ -271,7 +271,7 @@
     display: block;
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     line-height: 1;
     margin-bottom: 0.35rem;
   }

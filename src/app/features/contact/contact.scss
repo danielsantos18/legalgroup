@@ -48,8 +48,8 @@
         transition: 0.3s;
 
         &:hover {
-          background: var(--primary-color);
-          color: #000;
+          background: var(--secondary-color);
+          color: #fff;
         }
       }
     }
@@ -234,8 +234,8 @@
       transition: 0.2s;
 
       &:hover {
-        background: var(--primary-color);
-        color: #000;
+        background: var(--secondary-color);
+        color: #fff;
       }
     }
 
@@ -278,8 +278,8 @@
 }
 
 .btn-contact {
-  background: var(--primary-color); // ← tu gold global
-  color: var(--bg-color); // contraste dinámico
+  background: var(--secondary-color);
+  color: #fff;
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 1.75rem;

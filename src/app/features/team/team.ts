@@ -46,6 +46,15 @@ export class TeamComponent implements OnInit, OnDestroy {
       fullBio: 'Claudia Martínez cuenta con amplia trayectoria en el litigio de casos laborales y penales. Su rigor técnico y habilidad para construir estrategias jurídicas sólidas le han permitido obtener resultados favorables en casos de alta complejidad. Es reconocida por su capacidad de análisis profundo y su compromiso inquebrantable con la justicia.',
       specialties: ['Derecho Laboral', 'Derecho Penal', 'Litigio', 'Investigación Jurídica'],
     },
+    {
+      id: 4,
+      name: 'Claudia Martínez',
+      role: 'Psicóloga Forense',
+      photo: '/psicologa forense.jpeg',
+      shortBio: 'Experta en derecho laboral y penal con vasta experiencia en litigio.',
+      fullBio: 'Claudia Martínez cuenta con amplia trayectoria en el litigio de casos laborales y penales. Su rigor técnico y habilidad para construir estrategias jurídicas sólidas le han permitido obtener resultados favorables en casos de alta complejidad. Es reconocida por su capacidad de análisis profundo y su compromiso inquebrantable con la justicia.',
+      specialties: ['Derecho Laboral', 'Derecho Penal', 'Litigio', 'Investigación Jurídica'],
+    },
   ];
 
   // Signals: Angular detecta cambios sin depender de zone.js

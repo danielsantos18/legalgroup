@@ -33,7 +33,7 @@ h3{
 .mv-divider {
   width: 48px;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   border: none;
   margin: 20px auto;
 }
@@ -41,7 +41,7 @@ h3{
 .mv-subtitle {
   font-size: 12px;
   letter-spacing: 3px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-transform: uppercase;
   font-family: sans-serif;
   margin-bottom: 8px;
@@ -63,7 +63,7 @@ h3{
     left: 0;
     width: 3px;
     height: 100%;
-    background: var(--primary-color);
+    background: var(--secondary-color);
   }
 
   &:hover {
@@ -84,7 +84,7 @@ h3{
   svg {
     width: 22px;
     height: 22px;
-    stroke: var(--primary-color);
+    stroke: var(--secondary-color);
   }
 }
 
@@ -133,7 +133,7 @@ h3{
   font-family: sans-serif;
 
   strong {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: 500;
   }
 }
