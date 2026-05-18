@@ -29,6 +29,16 @@ export const routes: Routes = [
           ),
         title: 'Detalle de Servicio – Legal Group SAS',
       },
+
+      // Solicitud de asesoría (formulario profesional)
+      {
+        path: 'asesoria',
+        loadComponent: () =>
+          import('./features/asesoria/asesoria').then(
+            (m) => m.AsesoriaComponent
+          ),
+        title: 'Solicitar Asesoría – Legal Group SAS',
+      },
     ],
   },
 

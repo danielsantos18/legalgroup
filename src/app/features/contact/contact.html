@@ -120,50 +120,13 @@
         </div>
       </div>
 
-      <!-- 📌 DERECHA -->
+      <!-- 📌 DERECHA: Mapa grande -->
       <div class="col-lg-8">
-        <!-- 🗺 MAPA -->
-        <div class="map-card mb-4">
+        <div class="map-card map-card--lg">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.981545509769!2d-75.55087132429948!3d10.423038865611254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef62f9e6960b86d%3A0x4efca1aa45128bd4!2sInvercolombia!5e0!3m2!1sen!2sco!4v1776192602631!5m2!1sen!2sco"
-            width="600" height="450" style="border:0;" allowfullscreen
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-        <!-- 📝 FORMULARIO -->
-        <div class="form-card">
-          <h5>Escríbenos un mensaje</h5>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="text" placeholder="Nombre completo*" />
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="email" placeholder="Correo electrónico*" />
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <div class="custom-select" (click)="toggleDropdown()">
-              <div class="select-btn">
-                <span>{{ selected || 'Selecciona un asunto' }}</span>
-                <i class="bi bi-chevron-down" [class.rotate]="isOpen"></i>
-              </div>
-
-              <ul class="options" [class.active]="isOpen">
-                <li (click)="selectOption('Consulta legal')">Consulta legal</li>
-                <li (click)="selectOption('Asesoría')">Asesoría</li>
-                <li (click)="selectOption('Defensa jurídica')">Defensa
-                  jurídica</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <textarea rows="4" placeholder="Mensaje*"></textarea>
-          </div>
-
-          <button class="btn btn-primary-custom">Enviar mensaje</button>
+            style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

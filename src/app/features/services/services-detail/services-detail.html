@@ -335,12 +335,14 @@
       Agenda una consulta con nuestros especialistas en {{ service.name }}.
     </p>
     <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
-      <a href="tel:+573042484097" class="btn btn-cta-primary">
-        <i class="bi bi-telephone-fill me-2"></i>Llamar ahora
+      <a
+        [routerLink]="['/asesoria']"
+        [queryParams]="{ servicio: service.id }"
+        class="btn btn-cta-primary">
+        <i class="bi bi-file-earmark-text-fill me-2"></i>Solicitar asesoría
       </a>
-      <a href="mailto:Oficina@asesoriaslegalgroup.com"
-        class="btn btn-cta-outline">
-        <i class="bi bi-envelope-fill me-2"></i>Escribir correo
+      <a href="tel:+573042484097" class="btn btn-cta-outline">
+        <i class="bi bi-telephone-fill me-2"></i>Llamar ahora
       </a>
       <a routerLink="/servicios" class="btn btn-cta-outline">
         <i class="bi bi-grid-fill me-2"></i>Ver todos los servicios

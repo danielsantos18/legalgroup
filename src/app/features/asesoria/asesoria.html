@@ -1,0 +1,361 @@
+<section class="asesoria-page">
+  <div class="container">
+
+    <!-- Encabezado -->
+    <header class="asesoria-header text-center">
+      <h5 class="asesoria-eyebrow">Solicitud de asesoría legal</h5>
+      <h1 class="asesoria-title">Cuéntanos tu caso</h1>
+      <p class="asesoria-sub">
+        Completa este formulario para que nuestro equipo prepare una respuesta
+        ajustada a tu situación. Toda la información es tratada de forma
+        confidencial.
+      </p>
+    </header>
+
+    <!-- Barra de progreso -->
+    <ol class="stepper" role="list">
+      @for (n of [1, 2, 3, 4]; track n) {
+        <li
+          class="stepper__item"
+          [class.is-active]="pasoActual() === n"
+          [class.is-done]="pasoActual() > n"
+          (click)="irAPaso(n)"
+          role="button"
+          [attr.aria-current]="pasoActual() === n ? 'step' : null"
+        >
+          <span class="stepper__bullet">{{ n }}</span>
+          <span class="stepper__label">
+            @switch (n) {
+              @case (1) { Datos personales }
+              @case (2) { Servicio }
+              @case (3) { Detalles del caso }
+              @case (4) { Revisión y envío }
+            }
+          </span>
+        </li>
+      }
+    </ol>
+
+    <!-- Wizard -->
+    @if (estado() !== 'ok') {
+      <form
+        class="asesoria-form"
+        [formGroup]="formulario"
+        (ngSubmit)="enviar()"
+        [class.is-loading]="estado() === 'enviando'"
+        novalidate
+      >
+
+        <!-- Overlay de carga -->
+        @if (estado() === 'enviando') {
+          <div class="form-loading" role="status" aria-live="polite">
+            <div class="form-loading__card">
+              <div class="form-loading__spinner" aria-hidden="true">
+                <svg viewBox="0 0 50 50">
+                  <circle class="form-loading__track" cx="25" cy="25" r="20"></circle>
+                  <circle class="form-loading__arc"   cx="25" cy="25" r="20"></circle>
+                </svg>
+              </div>
+              <h3 class="form-loading__title">Enviando tu solicitud</h3>
+              <p class="form-loading__text">
+                Estamos transmitiendo tu caso al equipo legal de forma segura.
+                Esto tardará solo unos segundos…
+              </p>
+              <div class="form-loading__bar"><span></span></div>
+            </div>
+          </div>
+        }
+
+
+        <!-- ──────────────────────────────── PASO 1 -->
+        @if (pasoActual() === 1) {
+          <fieldset class="paso">
+            <legend class="paso__title">1. Datos personales</legend>
+            <p class="paso__hint">
+              Necesitamos identificarte para hacer seguimiento de tu solicitud.
+            </p>
+
+            <div class="grid">
+              <div class="field">
+                <label for="nombre">Nombres *</label>
+                <input id="nombre" type="text" formControlName="nombre" autocomplete="given-name" />
+                @if (errorDe('nombre'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+
+              <div class="field">
+                <label for="apellido">Apellidos *</label>
+                <input id="apellido" type="text" formControlName="apellido" autocomplete="family-name" />
+                @if (errorDe('apellido'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+
+              <div class="field">
+                <label for="documento">Documento de identidad *</label>
+                <input id="documento" type="text" formControlName="documento" inputmode="numeric" />
+                @if (errorDe('documento'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+
+              <div class="field">
+                <label for="telefono">Teléfono *</label>
+                <input id="telefono" type="tel" formControlName="telefono" autocomplete="tel" placeholder="+57 300 000 0000" />
+                @if (errorDe('telefono'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+
+              <div class="field">
+                <label for="email">Correo electrónico *</label>
+                <input id="email" type="email" formControlName="email" autocomplete="email" />
+                @if (errorDe('email'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+
+              <div class="field">
+                <label for="ciudad">Ciudad *</label>
+                <input id="ciudad" type="text" formControlName="ciudad" autocomplete="address-level2" />
+                @if (errorDe('ciudad'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+            </div>
+          </fieldset>
+        }
+
+        <!-- ──────────────────────────────── PASO 2 -->
+        @if (pasoActual() === 2) {
+          <fieldset class="paso">
+            <legend class="paso__title">2. Servicio que necesitas</legend>
+            <p class="paso__hint">
+              Selecciona el área principal y luego la subárea más cercana a tu situación.
+            </p>
+
+            <label class="field__label-block">Área del servicio *</label>
+            <div class="cards">
+              @for (s of servicios; track s.id) {
+                <label
+                  class="card-option"
+                  [class.is-selected]="formulario.get('servicioId')?.value === s.id"
+                >
+                  <input
+                    type="radio"
+                    [value]="s.id"
+                    formControlName="servicioId"
+                    (change)="formulario.patchValue({ subareaTitulo: '' })"
+                  />
+                  <span class="card-option__title">{{ s.name }}</span>
+                  <span class="card-option__desc">{{ s.shortDescription }}</span>
+                </label>
+              }
+            </div>
+            @if (errorDe('servicioId'); as msg) { <small class="field__error">{{ msg }}</small> }
+
+            @if (subareasDisponibles.length > 0) {
+              <div class="field mt-4">
+                <label for="subareaTitulo">Subárea / especialidad *</label>
+                <select id="subareaTitulo" formControlName="subareaTitulo">
+                  <option value="">— Selecciona una subárea —</option>
+                  @for (item of subareasDisponibles; track item.title) {
+                    <option [value]="item.title">{{ item.title }}</option>
+                  }
+                </select>
+                @if (errorDe('subareaTitulo'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+            }
+          </fieldset>
+        }
+
+        <!-- ──────────────────────────────── PASO 3 -->
+        @if (pasoActual() === 3) {
+          <fieldset class="paso">
+            <legend class="paso__title">3. Detalles del caso</legend>
+            <p class="paso__hint">
+              Mientras más contexto, mejor podremos prepararnos para tu primera consulta.
+            </p>
+
+            <label class="field__label-block">Nivel de urgencia *</label>
+            <div class="chips">
+              <label class="chip" [class.is-active]="formulario.get('urgencia')?.value === 'alta'">
+                <input type="radio" value="alta" formControlName="urgencia" />
+                <span>Alta · necesito atención inmediata</span>
+              </label>
+              <label class="chip" [class.is-active]="formulario.get('urgencia')?.value === 'media'">
+                <input type="radio" value="media" formControlName="urgencia" />
+                <span>Media · esta semana</span>
+              </label>
+              <label class="chip" [class.is-active]="formulario.get('urgencia')?.value === 'baja'">
+                <input type="radio" value="baja" formControlName="urgencia" />
+                <span>Baja · solo orientación</span>
+              </label>
+            </div>
+
+            <div class="grid mt-4">
+              <div class="field">
+                <label class="field__label-block">¿Ya hay un proceso en curso? *</label>
+                <div class="chips chips--inline">
+                  <label class="chip" [class.is-active]="formulario.get('procesoEnCurso')?.value === 'si'">
+                    <input type="radio" value="si" formControlName="procesoEnCurso" />
+                    <span>Sí</span>
+                  </label>
+                  <label class="chip" [class.is-active]="formulario.get('procesoEnCurso')?.value === 'no'">
+                    <input type="radio" value="no" formControlName="procesoEnCurso" />
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="fechaHecho">Fecha aproximada del hecho</label>
+                <input
+                  id="fechaHecho"
+                  type="date"
+                  formControlName="fechaHecho"
+                  (click)="abrirCalendario($event)"
+                />
+              </div>
+
+              <div class="field field--full">
+                <label for="entidadInvolucrada">Entidad o contraparte (opcional)</label>
+                <input
+                  id="entidadInvolucrada"
+                  type="text"
+                  formControlName="entidadInvolucrada"
+                  placeholder="Empresa, persona o entidad relacionada"
+                />
+              </div>
+
+              <div class="field field--full">
+                <label for="descripcion">Describe tu caso *</label>
+                <textarea
+                  id="descripcion"
+                  rows="6"
+                  formControlName="descripcion"
+                  placeholder="Cuéntanos qué ocurrió, cuándo, con quién y qué resultado esperas..."
+                ></textarea>
+                <div class="field__meta">
+                  <small class="field__hint">Mínimo 30 caracteres.</small>
+                  <small class="field__count">
+                    {{ formulario.get('descripcion')?.value?.length || 0 }} / 2000
+                  </small>
+                </div>
+                @if (errorDe('descripcion'); as msg) { <small class="field__error">{{ msg }}</small> }
+              </div>
+            </div>
+          </fieldset>
+        }
+
+        <!-- ──────────────────────────────── PASO 4 -->
+        @if (pasoActual() === 4) {
+          <fieldset class="paso">
+            <legend class="paso__title">4. Revisión y envío</legend>
+            <p class="paso__hint">
+              Revisa los datos antes de enviar. Recibirás copia en el correo indicado.
+            </p>
+
+            <div class="resumen">
+              <div class="resumen__bloque">
+                <h4>Datos personales</h4>
+                <p><strong>Nombre:</strong> {{ formulario.value.nombre }} {{ formulario.value.apellido }}</p>
+                <p><strong>Documento:</strong> {{ formulario.value.documento }}</p>
+                <p><strong>Teléfono:</strong> {{ formulario.value.telefono }}</p>
+                <p><strong>Correo:</strong> {{ formulario.value.email }}</p>
+                <p><strong>Ciudad:</strong> {{ formulario.value.ciudad }}</p>
+              </div>
+
+              <div class="resumen__bloque">
+                <h4>Servicio</h4>
+                <p><strong>Área:</strong> {{ servicioSeleccionado()?.name }}</p>
+                <p><strong>Subárea:</strong> {{ formulario.value.subareaTitulo }}</p>
+              </div>
+
+              <div class="resumen__bloque">
+                <h4>Caso</h4>
+                <p>
+                  <strong>Urgencia:</strong>
+                  <span class="badge badge--{{ formulario.value.urgencia }}">
+                    {{ formulario.value.urgencia | titlecase }}
+                  </span>
+                </p>
+                <p><strong>Proceso en curso:</strong> {{ formulario.value.procesoEnCurso === 'si' ? 'Sí' : 'No' }}</p>
+                @if (formulario.value.entidadInvolucrada) {
+                  <p><strong>Entidad/contraparte:</strong> {{ formulario.value.entidadInvolucrada }}</p>
+                }
+                @if (formulario.value.fechaHecho) {
+                  <p><strong>Fecha del hecho:</strong> {{ formulario.value.fechaHecho }}</p>
+                }
+                <p><strong>Descripción:</strong></p>
+                <blockquote class="resumen__blockquote">{{ formulario.value.descripcion }}</blockquote>
+              </div>
+            </div>
+
+            <div class="field field--full mt-4">
+              <label class="check">
+                <input type="checkbox" formControlName="aceptaPolitica" />
+                <span>
+                  He leído y acepto la
+                  <a routerLink="/" fragment="privacy">política de tratamiento de datos</a>
+                  y autorizo el uso de mi información para gestionar mi solicitud.
+                </span>
+              </label>
+              @if (errorDe('aceptaPolitica'); as msg) { <small class="field__error">{{ msg }}</small> }
+
+              <label class="check">
+                <input type="checkbox" formControlName="aceptaContacto" />
+                <span>Autorizo a LegalGroup a contactarme por correo, teléfono o WhatsApp.</span>
+              </label>
+              @if (errorDe('aceptaContacto'); as msg) { <small class="field__error">{{ msg }}</small> }
+            </div>
+
+            @if (estado() === 'error') {
+              <div class="alerta alerta--error">
+                <strong>No se pudo enviar.</strong> {{ mensajeError() }}
+              </div>
+            }
+          </fieldset>
+        }
+
+        <!-- Navegación inferior -->
+        <div class="actions">
+          @if (pasoActual() > 1) {
+            <button type="button" class="btn btn--ghost" (click)="anterior()" [disabled]="estado() === 'enviando'">
+              ← Anterior
+            </button>
+          } @else {
+            <span></span>
+          }
+
+          @if (pasoActual() < totalPasos) {
+            <button type="button" class="btn btn--primary" (click)="siguiente()">
+              Siguiente →
+            </button>
+          } @else {
+            <button
+              type="submit"
+              class="btn btn--primary"
+              [disabled]="estado() === 'enviando' || formulario.invalid"
+            >
+              @if (estado() === 'enviando') {
+                <span class="btn-spinner" aria-hidden="true"></span>
+                Enviando…
+              } @else {
+                Enviar solicitud
+              }
+            </button>
+          }
+        </div>
+
+      </form>
+    }
+
+    <!-- Estado de éxito -->
+    @if (estado() === 'ok') {
+      <div class="success-card">
+        <div class="success-card__icon">✓</div>
+        <h2>¡Solicitud enviada!</h2>
+        <p>
+          Hemos recibido tu consulta. Nuestro equipo revisará la información y
+          se pondrá en contacto contigo en las próximas horas hábiles.
+        </p>
+        <div class="success-card__actions">
+          <a class="btn btn--primary" routerLink="/">Volver al inicio</a>
+          <button type="button" class="btn btn--ghost" (click)="reiniciar()">
+            Enviar otra solicitud
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</section>
