@@ -39,13 +39,13 @@ export class ConsultaService {
   //
   // La Public Key es segura para exponer en el navegador (no es secreta).
   // ─────────────────────────────────────────────────────────────
-  private readonly SERVICE_ID = 'service_c6m2nf4';
+  private readonly SERVICE_ID = 'service_nel0053';
   private readonly TEMPLATE_ID = 'template_cuhedvj';
   private readonly PUBLIC_KEY = 'lW0Xl6VkIRTZDh3tF';
 
   // Correo de destino (debes ponerlo en el campo "To Email" de tu plantilla
   // de EmailJS, o pasarlo dinámicamente vía {{to_email}}).
-  private readonly TO_EMAIL = 'danielsntos06@gmail.com';
+  private readonly TO_EMAIL = 'oficina@asesoriaslegalgroup.com';
 
   async enviar(payload: ConsultaPayload): Promise<void> {
     const templateParams = {
