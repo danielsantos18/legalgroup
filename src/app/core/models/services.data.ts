@@ -96,7 +96,7 @@ export const SERVICES: Service[] = [
         title: 'Litigio y Resolución de Disputas',
         description:
           'Representación en procedimientos judiciales, arbitrajes y mediaciones para resolver disputas de diversas naturalezas. Nuestro centro de conciliación facilita la resolución rápida y eficiente de conflictos.',
-        icon: 'bi-balance-scale',
+        icon: 'bi-hammer',
       },
     ],
   },
@@ -234,13 +234,13 @@ export const SERVICES: Service[] = [
         title: 'Investigaciones de Antecedentes',
         description:
           'Realiza búsquedas exhaustivas para obtener información sobre antecedentes personales, laborales, financieros, etc.',
-        icon: 'bi-file-earmark-search-fill',
+        icon: 'bi-person-lines-fill',
       },
       {
         title: 'Investigaciones de Infidelidad',
         description:
           'Investiga casos de posibles relaciones extramatrimoniales y proporciona pruebas documentadas.',
-        icon: 'bi-heart-break-fill',
+        icon: 'bi-heartbreak-fill',
       },
       {
         title: 'Localización de Personas',
